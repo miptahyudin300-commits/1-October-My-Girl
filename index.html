@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 October — My Girl 💗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= HALAMAN 1 ================= -->
+<section class="page active" id="page1">
+
+    <div class="bg-hearts"></div>
+
+    <div class="pin-box">
+
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <h1>Masukin PIN-nya di sini 😜</h1>
+
+        <p>Masukkan 4 angka yang benar!</p>
+
+        <div class="pin-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="keypad">
+
+            <button onclick="pressKey('1')">1</button>
+            <button onclick="pressKey('2')">2</button>
+            <button onclick="pressKey('3')">3</button>
+
+            <button onclick="pressKey('4')">4</button>
+            <button onclick="pressKey('5')">5</button>
+            <button onclick="pressKey('6')">6</button>
+
+            <button onclick="pressKey('7')">7</button>
+            <button onclick="pressKey('8')">8</button>
+            <button onclick="pressKey('9')">9</button>
+
+            <div></div>
+
+            <button onclick="pressKey('0')">0</button>
+
+            <button onclick="hapus()">⌫</button>
+
+        </div>
+
+        <p id="pinError"></p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HALAMAN 2 ================= -->
+<section class="page" id="page2">
+
+    <div class="flower-bg"></div>
+
+    <div class="page2-content">
+
+        <div class="photo-box glow">
+
+            <span class="lamp lamp1"></span>
+            <span class="lamp lamp2"></span>
+            <span class="lamp lamp3"></span>
+            <span class="lamp lamp4"></span>
+
+            <img src="fto1.jpeg">
+
+            <div class="photo-text moving-x">
+                My Darling 💗
+            </div>
+
+        </div>
+
+        <div class="title-box">
+
+            <div class="small-title moving-x">
+                my happiness 🫶
+            </div>
+
+            <h1 class="moving-y">
+                1 October💐
+            </h1>
+
+            <p class="moving-x">
+                My Girl 💕
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER MUSIK -->
+    <div class="music-player">
+
+        <button id="musicButton" onclick="toggleMusic()">
+            ♫
+        </button>
+
+        <div>
+            <b>Our Song 💗</b>
+            <small>1 October — My Girl</small>
+        </div>
+
+    </div>
+
+    <button class="next" onclick="nextPage(3)">
+        NEXT →
+    </button>
+
+</section>
+
+
+<!-- ================= HALAMAN 3 ================= -->
+<section class="page dark-page" id="page3">
+
+    <div class="heart-container"></div>
+
+    <div class="video-area">
+
+        <div class="video-box glow">
+
+            <span class="lamp lamp1"></span>
+            <span class="lamp lamp2"></span>
+            <span class="lamp lamp3"></span>
+            <span class="lamp lamp4"></span>
+
+            <video controls playsinline poster="assets/foto3.jpg">
+
+                <source src="vt2.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <div class="video-caption">
+
+            <h1 class="moving-y">
+                YOU LOOK SO PRETTY 😶‍🌫️
+            </h1>
+
+            <p class="moving-x">
+                I LOVE THIS VIEW ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+    <button class="next" onclick="nextPage(4)">
+        NEXT →
+    </button>
+
+</section>
+
+
+<!-- ================= HALAMAN 4 ================= -->
+<section class="page" id="page4">
+
+    <div class="page4-content">
+
+        <div class="photo-box glow rotate">
+
+            <span class="lamp lamp1"></span>
+            <span class="lamp lamp2"></span>
+            <span class="lamp lamp3"></span>
+            <span class="lamp lamp4"></span>
+
+            <img src="fto2.jpeg">
+
+        </div>
+
+        <div class="side-text">
+
+            <p class="moving-y">
+                Your beautiful smile 💗
+            </p>
+
+            <p class="moving-y delay1">
+                Your beautiful eyes ✨
+            </p>
+
+            <p class="moving-y delay2">
+                Your little smile 🌸
+            </p>
+
+            <p class="moving-y delay3">
+                My favorite person 💕
+            </p>
+
+        </div>
+
+    </div>
+
+    <button class="next" onclick="nextPage(5)">
+        NEXT →
+    </button>
+
+</section>
+
+
+<!-- ================= HALAMAN 5 ================= -->
+<section class="page" id="page5">
+
+    <div class="flower-page">
+
+        <div class="big-flower">
+
+            <div class="petal petal1"></div>
+            <div class="petal petal2"></div>
+            <div class="petal petal3"></div>
+            <div class="petal petal4"></div>
+            <div class="petal petal5"></div>
+            <div class="petal petal6"></div>
+            <div class="petal petal7"></div>
+            <div class="petal petal8"></div>
+
+            <div class="flower-center">
+
+                <img src="fto3.jpeg">
+
+            </div>
+
+        </div>
+
+        <div class="flower-message">
+
+            <h1 class="moving-x">
+                Selamat 1 October,
+            </h1>
+
+            <h2 class="moving-y">
+                My Girl 💗
+            </h2>
+
+            <p class="moving-x">
+                Semoga hari ini menjadi hari yang indah 🌸
+            </p>
+
+        </div>
+
+    </div>
+
+    <button class="finish" onclick="finishWebsite()">
+        FINISH 💗
+    </button>
+
+</section>
+
+
+<!-- ================= ENDING ================= -->
+<section id="ending">
+
+    <div id="credits">
+
+        <p>1 OCTOBER</p>
+        <p>MY GIRL</p>
+        <p>MY FAVORITE PERSON</p>
+        <p>OUR LITTLE MEMORIES</p>
+        <p>EVERY LITTLE MOMENT</p>
+        <p>EVERY LITTLE SMILE</p>
+        <p>EVERY LITTLE STORY</p>
+        <p>WILL ALWAYS BE SPECIAL</p>
+        <p>THANK YOU</p>
+        <p>FOR BEING HERE</p>
+        <p>FOR BEING YOU</p>
+        <p>MY GIRL 💗</p>
+        <p>1 OCTOBER</p>
+        <p>THE END</p>
+
+    </div>
+
+    <div id="final-screen">
+
+        <img src="fto4.jpeg">
+
+        <h1>
+            Selamat 1 October,
+            My Girl 💗
+        </h1>
+
+        <button onclick="closeWebsite()">
+            KELUAR
+        </button>
+
+    </div>
+
+</section>
+
+
+<audio id="music" loop>
+    <source src="sound.mp3" type="audio/mpeg">
+</audio>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff1493;
+    --light-pink: #ff8bd1;
+    --soft-pink: #ffd1eb;
+    --dark-pink: #d50070;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: white;
+    color: var(--pink);
+}
+
+
+/* ================= PAGE ================= */
+
+.page {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: white;
+}
+
+.page.active {
+    display: flex;
+
+    animation: pageIn .8s ease;
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* ================= PIN ================= */
+
+#page1 {
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,20,147,.12),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,20,147,.1),
+            transparent 25%
+        ),
+        white;
+}
+
+.pin-box {
+
+    width: min(410px, 90vw);
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border: 3px solid #222;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.95);
+
+    box-shadow:
+        0 0 20px rgba(255,20,147,.25);
+
+    position: relative;
+}
+
+.pin-box h1 {
+
+    font-size: 27px;
+
+    margin-bottom: 10px;
+
+    color: #222;
+}
+
+.pin-box > p {
+
+    color: #444;
+
+    margin-bottom: 20px;
+}
+
+.pin-dots {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 17px;
+
+    margin-bottom: 25px;
+}
+
+.pin-dots span {
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--pink);
+
+    transition: .2s;
+}
+
+.pin-dots span.active {
+
+    background: var(--pink);
+
+    box-shadow:
+        0 0 10px var(--pink),
+        0 0 20px var(--pink);
+}
+
+.keypad {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.keypad button {
+
+    height: 58px;
+
+    border-radius: 18px;
+
+    border: 2px solid white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff8bd1,
+            #ff1493
+        );
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 10px rgba(255,20,147,.5);
+
+    transition: .15s;
+}
+
+.keypad button:hover {
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 20px var(--pink);
+}
+
+.keypad button:active {
+
+    transform: scale(.9);
+}
+
+#pinError {
+
+    color: var(--pink);
+
+    min-height: 20px;
+
+    margin-top: 12px;
+}
+
+
+/* CORNER */
+
+.corner {
+
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    border-color: #222;
+
+    border-style: solid;
+}
+
+.top-left {
+
+    top: 12px;
+    left: 12px;
+
+    border-width:
+        4px 0 0 4px;
+}
+
+.top-right {
+
+    top: 12px;
+    right: 12px;
+
+    border-width:
+        4px 4px 0 0;
+}
+
+.bottom-left {
+
+    bottom: 12px;
+    left: 12px;
+
+    border-width:
+        0 0 4px 4px;
+}
+
+.bottom-right {
+
+    bottom: 12px;
+    right: 12px;
+
+    border-width:
+        0 4px 4px 0;
+}
+
+
+/* ================= GLOW FOTO ================= */
+
+.photo-box {
+
+    position: relative;
+
+    padding: 10px;
+
+    border: 3px solid var(--pink);
+
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px var(--pink),
+        0 0 20px var(--pink);
+
+    animation: glow 1.4s infinite alternate;
+}
+
+@keyframes glow {
+
+    from {
+
+        box-shadow:
+            0 0 7px var(--pink),
+            0 0 15px var(--pink);
+    }
+
+    to {
+
+        box-shadow:
+            0 0 15px var(--pink),
+            0 0 35px var(--pink);
+    }
+}
+
+.photo-box img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 470px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+}
+
+
+/* ================= LAMPU SUDUT ================= */
+
+.lamp {
+
+    position: absolute;
+
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid var(--pink);
+
+    box-shadow:
+        0 0 7px white,
+        0 0 15px var(--pink),
+        0 0 30px var(--pink);
+
+    z-index: 5;
+
+    animation:
+        lampBlink .7s infinite alternate;
+}
+
+.lamp1 {
+
+    top: -10px;
+    left: -10px;
+}
+
+.lamp2 {
+
+    top: -10px;
+    right: -10px;
+
+    animation-delay: .2s;
+}
+
+.lamp3 {
+
+    bottom: -10px;
+    left: -10px;
+
+    animation-delay: .4s;
+}
+
+.lamp4 {
+
+    bottom: -10px;
+    right: -10px;
+
+    animation-delay: .6s;
+}
+
+@keyframes lampBlink {
+
+    from {
+
+        opacity: .4;
+
+        transform: scale(.8);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+/* ================= PAGE 2 ================= */
+
+#page2 {
+
+    align-items: center;
+    justify-content: center;
+}
+
+.page2-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 70px;
+
+    width: 90%;
+}
+
+.page2-content .photo-box {
+
+    width: min(400px, 75vw);
+}
+
+.title-box {
+
+    text-align: center;
+
+    max-width: 400px;
+}
+
+.title-box h1 {
+
+    font-size:
+        clamp(55px, 9vw, 90px);
+
+    line-height: .9;
+
+    color: var(--pink);
+
+    text-shadow:
+        0 0 10px #ff8bd1;
+}
+
+.title-box p {
+
+    font-size: 25px;
+
+    margin-top: 25px;
+}
+
+.small-title {
+
+    font-size: 25px;
+
+    font-style: italic;
+}
+
+.photo-text {
+
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+
+    bottom: 20px;
+
+    padding: 10px;
+
+    color: white;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,20,147,.85);
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+
+/* ================= MUSIC ================= */
+
+.music-player {
+
+    position: absolute;
+
+    bottom: 20px;
+    left: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 7px 15px 7px 7px;
+
+    border: 2px solid var(--pink);
+
+    border-radius: 50px;
+
+    background: white;
+
+    box-shadow:
+        0 0 15px rgba(255,20,147,.4);
+
+    z-index: 20;
+}
+
+.music-player button {
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 22px;
+
+    background:
+        radial-gradient(
+            circle,
+            white 0 8%,
+            #ff1493 9% 18%,
+            #222 19% 24%,
+            #ff69c4 25% 65%,
+            #222 66% 72%,
+            #ff1493 73%
+        );
+
+    box-shadow:
+        0 0 15px var(--pink);
+
+    animation:
+        diskSpin 2s linear infinite;
+
+    animation-play-state: paused;
+}
+
+.music-player button.playing {
+
+    animation-play-state: running;
+}
+
+@keyframes diskSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.music-player b {
+
+    display: block;
+
+    color: var(--pink);
+}
+
+.music-player small {
+
+    color: #777;
+}
+
+
+/* ================= MOVING TEXT ================= */
+
+.moving-x {
+
+    animation:
+        moveX 4s ease-in-out infinite alternate;
+}
+
+.moving-y {
+
+    animation:
+        moveY 4s ease-in-out infinite alternate;
+}
+
+@keyframes moveX {
+
+    from {
+        transform: translateX(-20px);
+    }
+
+    to {
+        transform: translateX(20px);
+    }
+}
+
+@keyframes moveY {
+
+    from {
+        transform: translateY(-18px);
+    }
+
+    to {
+        transform: translateY(18px);
+    }
+}
+
+
+/* ================= NEXT ================= */
+
+.next,
+.finish {
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    border: none;
+
+    background: var(--pink);
+
+    color: white;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 15px var(--pink);
+
+    z-index: 30;
+}
+
+
+/* ================= PAGE 3 ================= */
+
+.dark-page {
+
+    background: #07000d;
+
+    color: white;
+}
+
+.video-area {
+
+    width: 90%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 55px;
+}
+
+.video-box {
+
+    width: min(520px, 80vw);
+}
+
+.video-box video {
+
+    width: 100%;
+
+    height: 500px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    background: black;
+}
+
+.video-caption {
+
+    text-align: center;
+
+    max-width: 350px;
+}
+
+.video-caption h1 {
+
+    font-size:
+        clamp(25px, 5vw, 45px);
+
+    text-shadow:
+        0 0 10px #ff1493;
+}
+
+.video-caption p {
+
+    margin-top: 25px;
+
+    font-size: 25px;
+
+    color: #ff8bd1;
+}
+
+
+/* LOVE BACKGROUND */
+
+.heart-container::before,
+.heart-container::after {
+
+    content:
+        "♥  ♥  ♥  ♥  ♥  ♥  ♥  ♥";
+
+    position: absolute;
+
+    top: -100px;
+
+    left: 0;
+
+    width: 100%;
+
+    color: #ff79c8;
+
+    opacity: .6;
+
+    font-size: 35px;
+
+    letter-spacing: 45px;
+
+    line-height: 120px;
+
+    animation:
+        heartFall 8s linear infinite;
+}
+
+.heart-container::after {
+
+    animation-duration: 12s;
+
+    opacity: .3;
+}
+
+@keyframes heartFall {
+
+    from {
+        transform: translateY(-100px);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+
+/* ================= PAGE 4 ================= */
+
+#page4 {
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.page4-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 70px;
+
+    width: 90%;
+}
+
+.rotate {
+
+    transform: rotate(-3deg);
+}
+
+.side-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    text-align: center;
+
+    color: var(--pink);
+
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+.delay1 {
+    animation-delay: .4s;
+}
+
+.delay2 {
+    animation-delay: .8s;
+}
+
+.delay3 {
+    animation-delay: 1.2s;
+}
+
+
+/* ================= PAGE 5 ================= */
+
+#page5 {
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.flower-page {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 80px;
+
+    width: 90%;
+}
+
+.big-flower {
+
+    position: relative;
+
+    width: 480px;
+    height: 480px;
+
+    animation:
+        flowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes flowerFloat {
+
+    50% {
+        transform:
+            translateY(-10px)
+            rotate(2deg);
+    }
+}
+
+.petal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 170px;
+    height: 250px;
+
+    margin-left: -85px;
+    margin-top: -125px;
+
+    border-radius:
+        50% 50% 48% 48%;
+
+    border: 4px solid #ff55b7;
+
+    background:
+        radial-gradient(
+            circle at 50% 85%,
+            white 0 7%,
+            #ffb6df 10% 45%,
+            #ff1493 90%
+        );
+
+    box-shadow:
+        0 0 15px #ff1493,
+        0 0 35px #ff8bd1;
+
+    transform-origin:
+        50% 100%;
+}
+
+.petal1 {
+    transform:
+        rotate(0deg)
+        translateY(-95px);
+}
+
+.petal2 {
+    transform:
+        rotate(45deg)
+        translateY(-95px);
+}
+
+.petal3 {
+    transform:
+        rotate(90deg)
+        translateY(-95px);
+}
+
+.petal4 {
+    transform:
+        rotate(135deg)
+        translateY(-95px);
+}
+
+.petal5 {
+    transform:
+        rotate(180deg)
+        translateY(-95px);
+}
+
+.petal6 {
+    transform:
+        rotate(225deg)
+        translateY(-95px);
+}
+
+.petal7 {
+    transform:
+        rotate(270deg)
+        translateY(-95px);
+}
+
+.petal8 {
+    transform:
+        rotate(315deg)
+        translateY(-95px);
+}
+
+.flower-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 160px;
+    height: 160px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 7px solid var(--pink);
+
+    background: white;
+
+    box-shadow:
+        0 0 20px var(--pink),
+        0 0 45px #ff8bd1;
+
+    z-index: 10;
+}
+
+.flower-center img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.flower-message {
+
+    text-align: center;
+
+    max-width: 420px;
+}
+
+.flower-message h1 {
+
+    font-size:
+        clamp(30px, 5vw, 55px);
+
+    color: var(--pink);
+
+    text-shadow:
+        0 0 12px #ff8bd1;
+}
+
+.flower-message h2 {
+
+    font-size: 50px;
+
+    margin: 10px;
+
+    color: var(--pink);
+}
+
+.flower-message p {
+
+    font-size: 18px;
+
+    color: #b00060;
+}
+
+
+/* ================= ENDING ================= */
+
+#ending {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    background: black;
+
+    color: white;
+
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+#ending.show {
+
+    display: block;
+}
+
+#credits {
+
+    position: absolute;
+
+    width: 100%;
+
+    top: 100%;
+
+    text-align: center;
+
+    animation:
+        creditsMove 22s linear forwards;
+}
+
+#credits p {
+
+    font-size:
+        clamp(25px, 6vw, 55px);
+
+    margin: 40px 10px;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px var(--pink);
+}
+
+@keyframes creditsMove {
+
+    from {
+        top: 100%;
+    }
+
+    to {
+        top: -650%;
+    }
+}
+
+
+/* FOTO TERAKHIR */
+
+#final-screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    background: black;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 1.5s;
+}
+
+#final-screen.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+#final-screen img {
+
+    width: min(350px, 75vw);
+
+    height: min(430px, 60vh);
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    border: 3px solid var(--pink);
+
+    box-shadow:
+        0 0 20px var(--pink),
+        0 0 50px var(--pink);
+}
+
+#final-screen h1 {
+
+    color: #ff69c4;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 12px var(--pink);
+}
+
+#final-screen button {
+
+    padding: 13px 30px;
+
+    border-radius: 30px;
+
+    border: none;
+
+    background: var(--pink);
+
+    color: white;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 20px var(--pink);
+}
+
+
+/* ================= HP ================= */
+
+@media(max-width: 750px) {
+
+    .page2-content,
+    .video-area,
+    .page4-content,
+    .flower-page {
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .page2-content .photo-box {
+
+        width: 300px;
+    }
+
+    .photo-box img {
+
+        height: 330px;
+    }
+
+    .title-box h1 {
+
+        font-size: 55px;
+    }
+
+    .video-box {
+
+        width: 330px;
+    }
+
+    .video-box video {
+
+        height: 350px;
+    }
+
+    .video-caption h1 {
+
+        font-size: 25px;
+    }
+
+    .side-text {
+
+        font-size: 16px;
+
+        gap: 10px;
+    }
+
+    .big-flower {
+
+        transform: scale(.58);
+
+        margin-bottom: -100px;
+    }
+
+    .flower-message h1 {
+
+        font-size: 30px;
+    }
+
+    .flower-message h2 {
+
+        font-size: 40px;
+    }
+
+    .next,
+    .finish {
+
+        right: 12px;
+        bottom: 12px;
+    }
+
+}
